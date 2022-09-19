@@ -34,7 +34,7 @@ npm run dev
 ```
 The API server will be started and will run on port 3000. A message to this effect will be logged to the console.
 
-💻 ## API Endpoints
+## 💻 API Endpoints
 ### Testing Tools
 Since the project does not have a client-side, in order to test our API's endpoints, we'll use [Postman](https://www.postman.com/). 
 ### API Responses 
