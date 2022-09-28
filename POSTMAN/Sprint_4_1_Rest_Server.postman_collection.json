@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "e1a1cb46-40c3-4c52-b057-9d2749185976",
+		"name": "Sprint_4_1_Rest_Server",
+		"description": "Get request - endpoint /user - WORKS!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23223327"
+	},
+	"item": [
+		{
+			"name": "1.1 - GET/ user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 - POST/ upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "my_pic",
+							"type": "file",
+							"src": "/Users/cristinacarrillo/Desktop/nodeInitialDemo-main_4.1/test_files/britney.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
+					]
+				},
+				"description": "POST/ upload -- successfully uploads .jpeg file that is less than 3MB"
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 - POST/ upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "my_pic",
+							"type": "file",
+							"src": "/Users/cristinacarrillo/Desktop/nodeInitialDemo-main_4.1/test_files/text.txt",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"upload"
+					]
+				},
+				"description": "POST/ upload -- when uploading a .txt throws a 400 status code. WORKS!"
+			},
+			"response": []
+		},
+		{
+			"name": "2 - POST/ time",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				},
+				"description": "Returns server's date and time in JSON format, if the user's credentials are correct."
+			},
+			"response": []
+		},
+		{
+			"name": "2 - POST/ time",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"time"
+					]
+				},
+				"description": "Returns a 401 status code message, when the request's header does not contain basic authentication (username & password):\n\n{ \"status\": \"not-authorized\", \"message\": \"401-Unauthorized Access.\" }\n\nWORKS!"
+			},
+			"response": []
+		},
+		{
+			"name": "3 - GET/ pokemon/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/pokemon/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"pokemon",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				},
+				"description": "Calls Pokemon API and fetches certain pokemon data (name, height, weight) based on their ID#."
+			},
+			"response": []
+		}
+	]
+}
