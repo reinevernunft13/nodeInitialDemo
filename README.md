@@ -1,109 +1,51 @@
-# SPRINT 4.1: Node REST Server
 
-Build an API REST with Node and Express.
+# Node Initial Project
 
-## 👩‍💻 Requirements
+### Project Structure
 
-* [Node.js](https://nodejs.org/en/download/)
+Main structure of node.js project. Folders / files:
 
-## 🤓 Instructions
+- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
+- <b>app</b>:
+    - <b>config</b>
+    - <b>controllers</b>
+    - <b>middlewares</b>
+    - <b>models</b>
+    - <b>routes</b>
+    - <b>helpers</b>
+    - <b>app.js</b>. Entry point.
+- <b>package.json</b>.
+- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
 
-> **Step 1** - Clone the project:
+Extras:
+- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
+- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
+- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
 
-```
-gh repo clone reinevernunft13/nodeInitialDemo
-```
+### Import project for use with Visual Studio Code
 
-> **Step 2** - Install the necessary dependencies via NPM:
-
-```
-npm install
-```
-
-> **Step 3** - Start the server 
-
-(production mode):
-
-```
-npm start
-```
-(dev mode):
-
-```
-npm run dev
-```
-The API server will be started and will run on port 3000. A message to this effect will be logged to the console.
-
-💻 ## API Endpoints
-### Testing Tools
-Since the project does not have a client-side, in order to test our API's endpoints, we'll use [Postman](https://www.postman.com/). 
-### API Responses 
-
-**LEVEL 1** ⭐
-#### GET/ http://localhost:3000/user
-
-* Returns the following response in JSON format. 
-
-```
-{
-    "name": "Britney",
-    "age": "40",
-    "url": "http://localhost:3000/user"
-}
-```
-
-* When attempting to make a request to an non-existing route, a 404 status message will be returned. 
-
-    **NOTE**: *You can view responses to GET-type requests by navigating to: http://localhost:3000/* 
-#### POST/ http://localhost:3000/upload
-
-* Uploads images with jpeg, jpg, png, and gif format. Since this is not a text file, when creating your Postman request, you'll need to click on "Body" and select form-data as the body type. Next, for "KEY" enter "my_pic" and select file, instead of text, so that "value" reflects “select files”. The folder "/my_uploads" will be created where uploaded files will be stored.
-
-    **NOTE**: *Under the folder "/test_files", a .jpeg and a .txt file can be found. You can use these for your convenience, but any other file in your computer should work to test this endpoint.*
-
-* If successful, a 200 status message will be returned;
-
-* If it fails, either a 400 or 415 status message will be returned;
-
-* If something goes wrong with the server, a 500 code message will be returned;  
-
-**LEVEL 2** ⭐⭐
-#### POST/ http:localhost:3000/time
-
-* Returns server's date and time in the format:
-
-````
-{
-    "date": "15/09/2022, 12:08:18"
-}
-````
-
-* When testing this endpoint's functionality in Postman, you'll need to click on "Authorization" and select "Basic Auth". 
-
-    - Username: admin
-    - Password: password1234
-
-* If the credentials are not valid or the auth header is not included, a 401 status message will be returned.
-
-**LEVEL 3** ⭐⭐⭐ 
-#### POST/ http:localhost:3000/pokemon/:id
-
-* Calls the Pokemon API and fetches pokemon data (name, height, and weight) by ID. For example:
-```
-{
-    "pokemon": {
-        "name": "bulbasaur",
-        "height": 7,
-        "weight": 69
-    }
-}
-```
+Follow the steps below:
+* Clone the project from the Github Platform. Execute:
+  ```
+  git clone [url project]
+  ```
+* Open the project downloaded.
+  ![Open Project](img/VSC_open.png)
 
 
+### Import project for use with WebStorm
+
+Follow the steps below:
+* Clone the project from the Github Platform. Execute:
+  ```
+  git clone [url project]
+  ```
+* Open the project downloaded.
+![Open Project](img/webstorm_open.png)
 
 
+### Utilities
 
-
-
-
-
+* [Node Developers Guide](https://nodejs.dev/learn)
+* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
+* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
