@@ -1,4 +1,4 @@
-const basicAuth = require('express-basic-auth')
+const basicAuth = require('express-basic-auth');
 
 const userAuth = basicAuth({
     users: { 'admin': 'password1234' },

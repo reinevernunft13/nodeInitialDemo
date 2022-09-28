@@ -35,8 +35,10 @@ npm run dev
 The API server will be started and will run on port 3000. A message to this effect will be logged to the console.
 
 ## 💻 API Endpoints
+
 ### Testing Tools
-Since the project does not have a client-side, in order to test our API's endpoints, we'll use [Postman](https://www.postman.com/). 
+Since the project does not have a client-side, in order to test our API's endpoints, we'll use [Postman](https://www.postman.com/). Various Postman requests have been group into a collection, to be found in a JSON file under the project's folder "/POSTMAN".
+
 ### API Responses 
 
 **LEVEL 1** ⭐
@@ -55,9 +57,10 @@ Since the project does not have a client-side, in order to test our API's endpoi
 * When attempting to make a request to an non-existing route, a 404 status message will be returned. 
 
     **NOTE**: *You can view responses to GET-type requests by navigating to: http://localhost:3000/* 
+    
 #### POST/ http://localhost:3000/upload
 
-* Uploads images with jpeg, jpg, png, and gif format. Since this is not a text file, when creating your Postman request, you'll need to click on "Body" and select form-data as the body type. Next, for "KEY" enter "my_pic" and select file, instead of text, so that "value" reflects “select files”. The folder "/my_uploads" will be created where uploaded files will be stored.
+* Uploads images with jpeg, jpg, png, and gif format. Since this is not a text file, when creating your Postman request, you'll need to select: "Body" > "form-data". Next, in "KEY" enter "my_pic" and select "file", instead of text, so that "value" reflects “select files”. The folder "/my_uploads" will be created where uploaded files will be stored.
 
     **NOTE**: *Under the folder "/test_files", a .jpeg and a .txt file can be found. You can use these for your convenience, but any other file in your computer should work to test this endpoint.*
 
@@ -68,7 +71,7 @@ Since the project does not have a client-side, in order to test our API's endpoi
 * If something goes wrong with the server, a 500 code message will be returned;  
 
 **LEVEL 2** ⭐⭐
-#### POST/ http:localhost:3000/time
+#### POST/ http://localhost:3000/time
 
 * Returns server's date and time in the format:
 
@@ -78,7 +81,7 @@ Since the project does not have a client-side, in order to test our API's endpoi
 }
 ````
 
-* When testing this endpoint's functionality in Postman, you'll need to click on "Authorization" and select "Basic Auth". 
+* When testing this endpoint's functionality in Postman, select "Authorization" > "Basic Auth". 
 
     - Username: admin
     - Password: password1234
@@ -86,9 +89,9 @@ Since the project does not have a client-side, in order to test our API's endpoi
 * If the credentials are not valid or the auth header is not included, a 401 status message will be returned.
 
 **LEVEL 3** ⭐⭐⭐ 
-#### POST/ http:localhost:3000/pokemon/:id
+#### POST/ http://localhost:3000/pokemon/:id
 
-* Calls the Pokemon API and fetches pokemon data (name, height, and weight) by ID. For example:
+* Calls the [Pokémon API](https://pokeapi.co/) and fetches pokemon data (name, height, and weight) by a pokemon's ID#. For example:
 ```
 {
     "pokemon": {
@@ -98,7 +101,7 @@ Since the project does not have a client-side, in order to test our API's endpoi
     }
 }
 ```
-
+* In Postman, go to "Params" > "Path Variables" and enter a given pokemon's ID# as value.
 
 
 
