@@ -1,43 +1,34 @@
-'use strict';
-//IMPORTS
+'use strict'
+
 require('dotenv').config();
 const express = require('express');
-const path = require('path');
-
-//instantiate express
 const app = express();
 
-//Set up server environment
-const PORT = 3000;
-//const PORT = process.env.PORT;
-//const PORT = process.env.PORT || 3000;
+const { connectSequelize } = require('./app/db/db_mysql.js');
+
+connectSequelize();
 
 //IMPORT ROUTES
-const user_routes = require('./src/routes/user.js');
-const upload_routes = require('./src/routes/upload.js');
-const time_routes = require('./src/routes/time.js');
-const poke_routes = require('./src/routes/pokemon.js');
 
-//ADDS MIDDLEWARE FUNCTIONS 
-app.use(express.static(path.join(__dirname, './my_uploads')));
-//global middleware => parses JSON data in the request body. 
+const players_routes = require('./app/routes/players');
+const game_routes = require('./app/routes/game');
+const ranking_routes = require('./app/routes/ranking');
+
+//MIDDLEWARES 
+//Body-parser
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//LEVEL 1 
-app.use('/', user_routes);
-app.use('/', upload_routes);
+app.use('/', players_routes);
+app.use('/', game_routes);
+app.use('/', ranking_routes);
 
-//LEVEL 2
-app.use('/', time_routes);
+//invalid route handling
+app.use((req, res, next)=> {
+    res.status(404).send({ message: "Bad request: Route Not Found" });
+  });  
 
-//LEVEL 3
-app.use('/', poke_routes);
-
-//error
-app.use((req, res, next) => {
-    res.status(404).send('ERROR 404 - Route Not Found'); 
-  });
-//START SERVER -- always last!
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+//STARTS SERVER
+app.listen(process.env.API_PORT, () => {
+    console.log('API Server running on port ' + process.env.API_PORT);
 });

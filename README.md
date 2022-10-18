@@ -1,12 +1,25 @@
-# SPRINT 4.1: Node REST Server
+# 4.2: DICE GAME - NODE REST + DB + JWT 🎲🎲 
 
-Build an API REST with Node and Express.
+## 🗒️  Description.
 
-## 👩‍💻 Requirements
+- API implementation for a simple dice game on Node.Js, using:
+ - **Express** -> for building REST APIs,
+ - **MySql** -> for the database, 
+ - **Sequelize** -> as ORM.
 
-* [Node.js](https://nodejs.org/en/download/)
+- In this game, two six-sided dice are thrown together. If the the sum of the dice is 7, it's a winning throw and the player wins. For further details on functionalities, check the endpoints section below.
+   
+## 💻 Requirements
 
-## 🤓 Instructions
+In order for the project to work, please make sure the following technology is installed in your machine:
+
+- [Node.js](https://nodejs.org/en/download/) 
+- [NPM](https://www.npmjs.com/) 
+- [MySQL](https://dev.mysql.com/downloads/installer/)
+
+## 👩‍💻 Getting Started 👇  
+
+### 🛠️ Installing
 
 > **Step 1** - Clone the project:
 
@@ -20,90 +33,41 @@ gh repo clone reinevernunft13/nodeInitialDemo
 npm install
 ```
 
-> **Step 3** - Start the server 
+### 🔐 Environment Variables 
 
-(production mode):
+> **Step 3** - Copy the .env-template file into a new **.env** file and fill in the values. 
 
-```
-npm start
-```
-(dev mode):
+### 🚀 Run the Project
 
-```
+> **Step 4** - Launch the project...
+
+For production mode:
+````
+npm run start
+````
+
+For development mode:
+
+````
 npm run dev
-```
-The API server will be started and will run on port 3000. A message to this effect will be logged to the console.
+````
 
-💻 ## API Endpoints
+## 🧪 API Testing
+
 ### Testing Tools
-Since the project does not have a client-side, in order to test our API's endpoints, we'll use [Postman](https://www.postman.com/). 
-### API Responses 
 
-**LEVEL 1** ⭐
-#### GET/ http://localhost:3000/user
+To test our API's endpoints, we'll use [Postman](https://www.postman.com/). Various Postman requests have been group into a collection, to be found in a JSON file under the project's folder "/Postman".
 
-* Returns the following response in JSON format. 
+### Endpoints
 
-```
-{
-    "name": "Britney",
-    "age": "40",
-    "url": "http://localhost:3000/user"
-}
-```
-
-* When attempting to make a request to an non-existing route, a 404 status message will be returned. 
-
-    **NOTE**: *You can view responses to GET-type requests by navigating to: http://localhost:3000/* 
-#### POST/ http://localhost:3000/upload
-
-* Uploads images with jpeg, jpg, png, and gif format. Since this is not a text file, when creating your Postman request, you'll need to click on "Body" and select form-data as the body type. Next, for "KEY" enter "my_pic" and select file, instead of text, so that "value" reflects “select files”. The folder "/my_uploads" will be created where uploaded files will be stored.
-
-    **NOTE**: *Under the folder "/test_files", a .jpeg and a .txt file can be found. You can use these for your convenience, but any other file in your computer should work to test this endpoint.*
-
-* If successful, a 200 status message will be returned;
-
-* If it fails, either a 400 or 415 status message will be returned;
-
-* If something goes wrong with the server, a 500 code message will be returned;  
-
-**LEVEL 2** ⭐⭐
-#### POST/ http:localhost:3000/time
-
-* Returns server's date and time in the format:
-
-````
-{
-    "date": "15/09/2022, 12:08:18"
-}
-````
-
-* When testing this endpoint's functionality in Postman, you'll need to click on "Authorization" and select "Basic Auth". 
-
-    - Username: admin
-    - Password: password1234
-
-* If the credentials are not valid or the auth header is not included, a 401 status message will be returned.
-
-**LEVEL 3** ⭐⭐⭐ 
-#### POST/ http:localhost:3000/pokemon/:id
-
-* Calls the Pokemon API and fetches pokemon data (name, height, and weight) by ID. For example:
-```
-{
-    "pokemon": {
-        "name": "bulbasaur",
-        "height": 7,
-        "weight": 69
-    }
-}
-```
-
-
-
-
-
-
-
+- **POST /players** - creates a player with a unique name or 'anonymous' as default.
+- **PUT /players/:id** - modifies a player's name.
+- **GET /players** - returns a list of all registered players along with their win rate. 
+- **POST /game/:id** - a player makes a dice throw. 
+- **DELETE /game/:id** - deletes throws made by a player.
+- **GET /game/:id** - returns a list of throws by player.
+- **GET /ranking** - returns a player ranking ordered by win rate and the average win rate of registered players. 
+- **GET /ranking/loser** - returns player with lowest win rate.
+- **GET /ranking/winner** - returns player with highest win rate.
 
 
