@@ -1,0 +1,11 @@
+# project dependencies
+
+node_modules/
+
+# OS variables
+
+.DS_Store
+
+# dotenv
+
+.env
