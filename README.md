@@ -1,51 +1,85 @@
+# 5.1. Real-Time Chat App 💬
 
-# Node Initial Project
+## 📢 Project Overview
+### Description
 
-### Project Structure
+Multi-room real-time chat app built with:
 
-Main structure of node.js project. Folders / files:
+- with NodeJs, 
+- ExpressJs,
+- Socket.io 
+- Mongoose & MongoDB 
 
-- <b>\_\_tests__</b>. Tests folder. See [Jest Docs](https://jestjs.io/es-ES/docs/configuration) and [Chai Docs](https://www.chaijs.com/)
-- <b>app</b>:
-    - <b>config</b>
-    - <b>controllers</b>
-    - <b>middlewares</b>
-    - <b>models</b>
-    - <b>routes</b>
-    - <b>helpers</b>
-    - <b>app.js</b>. Entry point.
-- <b>package.json</b>.
-- <b>.env</b>. Environment descriptor. See [dotenv doc](https://www.npmjs.com/package/dotenv).
+### Features
 
-Extras:
-- <b>.eslintrc</b>. Linter JS, static code analyzer. See [EsLint Docs](https://eslint.org/docs/user-guide/configuring/configuration-files).
-- <b>.prettierignore</b>. Code formatter. See [Prettier Config](https://prettier.io/docs/en/configuration.html) and [Prettier Ignore](https://prettier.io/docs/en/ignore.html).
-- <b>.ecosystem.config.js</b>. Process Manage at runtime. See [PM2 Docs](https://pm2.keymetrics.io/).
+- Registered users access the general channel and are able to create and access multiple channels.
+- 
 
-### Import project for use with Visual Studio Code
+## 🚀 Getting Started
 
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-  ![Open Project](img/VSC_open.png)
+As the project stands, client and server are completely decoupled. So, though the project is set up to run on localhost, client and server will each run on a different port.
+
+## 🔧 Installing
+
+> **Step 1** - Clone the repository
+
+````
+git clone 
+````
+
+> **Step 2** - Install necessary project dependencies for the **client-side** via NPM:
+
+````
+cd server
+npm install
+````
+
+> **Step 3** - Install necessary project dependencies for the **server-side** via NPM:
+
+```
+cd client
+npm install
+```
+
+> **Step 4** - Set your environment variables and values -- for each the server and the client-side -- by creating a new **.env** file. A file called '.env-template' contains a list of required environment variables. Copy these onto a **.env** file and fill in the values so as to be able to run the project in your local machine.
+
+````
+API_PORT=[your_port]
+````
+
+**TIP**: To generate a secure token secret for your JWT, you can use NodeJs' common core module 'crypto' by opening a new terminal and running:
+
+```
+$ node
+> require('crypto').randomBytes(64).toString('hex')
+```
+
+## Run the project
+
+⚠️ Given the client/server setup for the project, the client-side and the server-side need to be started separately. To do this, open two terminal windows or split your terminal. Now run the following commands on each terminal window/pane:
+
+* For the **client-side**:
+
+````
+cd client
+npm run start
+npm run dev
+````
+
+* For the **server-side**:
+
+````
+cd server
+npm run start
+npm run dev
+````
 
 
-### Import project for use with WebStorm
-
-Follow the steps below:
-* Clone the project from the Github Platform. Execute:
-  ```
-  git clone [url project]
-  ```
-* Open the project downloaded.
-![Open Project](img/webstorm_open.png)
 
 
-### Utilities
 
-* [Node Developers Guide](https://nodejs.dev/learn)
-* **.gitignore file** configuration. See [Official Docs](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files).
-* **Git branches**. See [Official Docs](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+
+
+
+
+ 
