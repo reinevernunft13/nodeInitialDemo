@@ -1,10 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "server-side of chat app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.2",
+    "node-emoji": "^1.11.0",
     "socket.io": "^4.5.4"
   }
 }
