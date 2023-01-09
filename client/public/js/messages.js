@@ -16,7 +16,7 @@ const sendMessage = () => {
 }
 
 //outputs chat messages to DOM
-const displayMessage = (message) =>{
+const displayMessage = (message) => {
     //shows current message list
     let messageList = document.getElementById("messageList");
     //creates html element with current message to append to current message list
@@ -88,19 +88,4 @@ const displayJoinMessage = (message) => {
     li.setAttribute('id', 'lastMessage');
     messageList.append(li);
 }
-
-/* WORKS!
-const displayJoinMessage = (message) => {
-    
-    document.getElementById('lastMessage').removeAttribute('id');
-    let messageList = document.getElementById('messageList');
-
-    let li = document.createElement('li');
-    li.classList.add('chat-li-join')
-    li.textContent = message;
-    li.setAttribute('id', 'lastMessage');
-    messageList.append(li);
-
-    messageList.scrollTop = messageList.scrollHeight;
-}*/
 
