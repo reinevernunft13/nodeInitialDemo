@@ -26,8 +26,7 @@ const socketEvents = async(io) => {
                         return next(new Error('Authentication error'));
                     }
                     socket.decoded = decoded;
-                    console.log('this is the decoded content: '+ JSON.stringify(socket.decoded));
-                    //console.log('this is the decoded content: '+ JSON.stringify(decoded));
+                    //console.log('this is the decoded content: '+ JSON.stringify(socket.decoded));
                    });
                 }
                     next();
@@ -40,12 +39,12 @@ const socketEvents = async(io) => {
             userName: socket.decoded.userName
         };
 
-        console.log('this is user object :' + user);
+        //console.log('this is user object :' + user);
         
         console.log(emoji.get("large_green_circle") + `user ${user.userName} connected to socket.io server`);
 
         socket.emit('new-user', user);
-        console.log('this is the user object sent in new-user event: ' + user);
+        //console.log('this is the user object sent in new-user event: ' + user);
 
         socket.on('new-message', async (message) => {
            //saves message to db before emitting back to front
