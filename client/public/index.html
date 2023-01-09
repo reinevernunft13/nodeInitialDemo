@@ -7,19 +7,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/chat-style.css">
         <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-
     </head> 
     <body>
         <header class="header">
-            <h2>My channel:</h2>
-            <h1 id="roomName" class="header-roomname"></h1>
-            <h1 id="userName" class="header-username"></h1>
-            <div class="add-space"></div>
-             <a class="button-logout" onclick="logout()"><i class="fa-solid fa-power-off fa-2x" ></i></a>
+            <div>
+                <h1 id="userName" class="header-username"></h1>
+            </div>
+            <div>
+                <h1 id="roomName" class="header-roomname"></h1>
+            </div>
+            <a class="button-logout" onclick="logout()"><i class="fa-solid fa-power-off fa-2x" ></i></a>
        </header>
        <div class="chat-container">
             <div id="room" class="room">
-                <button class="room-header" type="button">Channels</button>
+                <button class="room-header" type="button">#Channels</button>
                 <form id="roomForm" class="room-form" onsubmit="createRoom()">
                     <h1 id="userName" class="header-username"></h1>
                     <input class="input" type="text" id="newRoom" name="newRoom" placeholder="New room... " maxlength="16" spellcheck="false" autocomplete="off" required>
