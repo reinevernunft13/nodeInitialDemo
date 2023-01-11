@@ -10,12 +10,11 @@ const socketEvents = async(io) => {
     //authenticate socket
     io.use((socket, next) => {
     
-        //console.log(socket.handshake.headers);
+        //console.log('handshake headers ->', socket.handshake.headers);
         const query = socket.handshake.query;
-        //console.log(query);
+        //console.log('query -> ', query);
         const queryToken = socket.handshake.query.accessToken;
-        //console.log(queryToken);
-
+        //console.log('handshake.query.accessToken ->', queryToken);
         if(query && queryToken) {
         //if (socket.handshake.query && socket.handshake.query.accessToken) {
 
@@ -30,17 +29,17 @@ const socketEvents = async(io) => {
                    });
                 }
                     next();
-        });
+    });
 
     io.on('connection', socket => {
+        console.log('socket.id: ', socket.id);
 
         const user = {
             userId: socket.decoded.userId, 
             userName: socket.decoded.userName
-        };
+        }
 
         //console.log('this is user object :' + user);
-        
         console.log(emoji.get("large_green_circle") + `user ${user.userName} connected to socket.io server`);
 
         socket.emit('new-user', user);
@@ -54,13 +53,11 @@ const socketEvents = async(io) => {
             } else {
                 io.to(socket.id).emit('error', newMsg.message);
             }
-        })
-
+        });
          //creates new chatroom and informs users
         socket.on('new-room', async(roomName) => {
 
             let createdRoom = await createRoom(roomName);
-            
             if(createdRoom.status === 'success') {
                 
                 let currentUsers = await getUsers(createdRoom.room);
@@ -70,8 +67,7 @@ const socketEvents = async(io) => {
             } else {
                 io.to(socket.id).emit('error', createdRoom.message);
             }
-        })
-
+        });
         //gets list of rooms
         socket.on('get-rooms', async() => {
 
@@ -88,7 +84,7 @@ const socketEvents = async(io) => {
         });
         
         //join room, leave former, and inform about change
-        socket.on('join-room', async(room, user) => {
+        socket.on('join-room', async(room) => {
             
             let joinedRoom = await joinRoom(user, room);
 
@@ -134,14 +130,13 @@ const socketEvents = async(io) => {
             } else {
                 io.to(socket.id).emit('error', joinedRoom.message);
             }
-        })      
+        });
         
         socket.on('disconnect', async() => {
             
             let disconnectedUser = await disconnectUser(user);
            
             if (disconnectedUser.status === 'success') {
-                //console.log(emoji.get("red_circle") + `user ${user.userName} disconnected from socket.io server`);
                 console.log(emoji.get("red_circle") + `user ${disconnectedUser.user.userName} disconnected from socket.io server`);
 
                 // USER leaves former room

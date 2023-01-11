@@ -17,6 +17,30 @@ const getUsers = async(room) => {
     return result;
 }
 
+/*const disconnectUser = async(user) => {
+
+    let result;
+
+    try {
+        
+        const userDisconnected = await Users.findOneAndUpdate(
+            { _id: user.userId }, 
+            { 'room.roomId': null, 
+            'room.roomName': null }
+            );
+
+        if(userDisconnected) {
+            result = { status: 'success', user, room: userDisconnected.room}
+        } else {
+            result = {status: 'error', message: 'socketid for user disconnect not found'}
+        }
+    } catch (err) {
+        result =  { status:'error', message: err.message };
+    }
+
+    return result;
+}*/
+
 const disconnectUser = async(user) => {
 
     let result;
@@ -25,7 +49,8 @@ const disconnectUser = async(user) => {
         
         const userDisconnected = await Users.findOneAndUpdate(
             { _id: user.userId }, 
-            { 'room.roomId': null, 'room.roomName': null }
+            { 'room.roomId': null, 
+            'room.roomName': null }
             );
 
         if (userDisconnected) {
@@ -39,7 +64,6 @@ const disconnectUser = async(user) => {
 
     return result;
 }
-
 
 const joinRoom = async(user, room) => {
 

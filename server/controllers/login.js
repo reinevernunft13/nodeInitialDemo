@@ -7,7 +7,7 @@ const login = async (req, res) => {
     const userName = req.body.userName;
     const password = req.body.password;
     
-    console.log('user input is :' + userName, password);
+    //console.log('user input is :' + userName, password);
 
     if(!userName || !password) {
         return res.status(400).json({
@@ -34,6 +34,7 @@ const login = async (req, res) => {
             userName: userFound.userName
         }
         const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_KEY);
+        
         return res.status(200).json({
             status: 'ok',
             payload: payload,

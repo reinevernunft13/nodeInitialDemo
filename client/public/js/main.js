@@ -9,9 +9,7 @@ if(!accessToken) {
 }
 
 const socket = io('http://localhost:4001', {
-    //reconnectionDelayMax: 10000,
     query: {
         'accessToken': localStorage.accessToken
     }
 });
-
